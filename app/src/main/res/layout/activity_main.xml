@@ -4,45 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/start_app"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="298dp"
-        android:layout_height="203dp"
-        android:fontFamily="@font/herr_von_muellerhoff"
-        android:text="@string/slogan"
-        android:textColor="#FBF9F9"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+    android:background="@drawable/start_app">
+    <!--tools:context=".MainActivity"-->
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="209dp"
-        android:layout_height="180dp"
+        android:layout_width="254dp"
+        android:layout_height="187dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/start_logo" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="204dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/start_btn"
-        android:fontFamily="@font/annie_use_your_telescope"
-        android:text="Let's Start"
-
+        android:drawableRight="@drawable/arrow_start"
+        android:fontFamily="@font/allura"
+        android:onClick="goIn"
+        android:paddingRight="12dp"
+        android:shadowColor="#B3000000"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="50"
+        android:text="@string/start"
         android:textColor="#F8F6F6"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.798" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="335dp"
+        android:layout_height="151dp"
+        android:enabled="false"
+        android:fontFamily="@font/allura"
+        android:shadowColor="#B3000000"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="50"
+        android:text="@string/slogan"
+        android:textColor="#FFFFFF"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
 </android.support.constraint.ConstraintLayout>

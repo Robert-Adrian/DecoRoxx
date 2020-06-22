@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="190dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@drawable/element_drawer_image"
+        app:srcCompat="@drawable/as" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:fontFamily="@font/allura"
+        android:textSize="19dp"
+        android:text="@string/buchet" />
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/element_drawer_text"
+        android:fontFamily="@font/allura"
+        android:textAlignment="textEnd"
+        android:text="30 lei"
+        android:gravity="end" />
+</LinearLayout>

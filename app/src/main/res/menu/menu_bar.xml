@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_menu">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/buchets"
+            android:fontFamily="@font/allura"
+            android:title="@string/buchets"
+            android:enabled="true"
+            android:icon="@drawable/item1_filled"
+            android:checked="true"
+            android:checkable="true"
+            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/events"
+            android:title="@string/events"
+            android:enabled="true"
+            android:icon="@drawable/item2"
+            android:checkable="true"
+            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/mart"
+            android:title="@string/mart"
+            android:enabled="true"
+            android:icon="@drawable/item3"
+            android:checkable="true"
+            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/shop"
+            android:title="@string/shop"
+            android:enabled="true"
+            android:icon="@drawable/item4"
+            android:checkable="true"
+            app:showAsAction="ifRoom"/>
+    </group>
+</menu>
