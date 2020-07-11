@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/as" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:fontFamily="@font/allura"
+                android:paddingTop="30dp"
+                android:paddingLeft="50dp"
+                android:paddingBottom="10dp"
+                android:text="Buchet de trandafiri"/>
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/allura"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:justificationMode="inter_word"
+                android:textSize="23dp"
+                android:text="\t\t\tBuchet de trandafiri decorat pentru un moment special alaturi de persoana draga. Florile sunt confectionate din sapun, astfel ele nu se vor ofilii niciodata, vor parfuma aerul si vor face persoana draga sa se gandeasca la dumneavoastra.
+           \n\tPretul este cel de jos, livrarea se face in Timisoara si nu se percep costuri in plus."   />
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/price_layout"
+        layout="@layout/bottom_component"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

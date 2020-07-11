@@ -12,7 +12,7 @@
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/search_bar"
         android:ems="10"
         android:fontFamily="@font/allura"
@@ -59,23 +59,13 @@
             android:layout_height="wrap_content"
             android:stretchColumns="0,1">
 
-            <TableRow
-                android:id="@+id/row_products"
+           <!-- <TableRow
+                android:id="@+id/row_products1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+            </TableRow>-->
 
-                <include
-                    layout="@layout/element1_col1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    layout="@layout/element1_col2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </TableRow>
 
         </TableLayout>
     </ScrollView>

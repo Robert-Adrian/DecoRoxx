@@ -3,32 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/root">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
-        android:layout_height="190dp"
+        android:layout_height="200dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:background="@drawable/element_drawer_image"
-        app:srcCompat="@drawable/as" />
+        />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/description"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="#fff"
         android:fontFamily="@font/allura"
         android:textSize="19dp"
-        android:text="@string/buchet" />
+        android:paddingLeft="8dp"
+         />
 
     <TextView
+        android:id="@+id/price"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/element_drawer_text"
         android:fontFamily="@font/allura"
         android:textAlignment="textEnd"
-        android:text="30 lei"
+        android:textSize="19dp"
+        android:paddingRight="8dp"
+        android:textStyle="bold"
         android:gravity="end" />
 </LinearLayout>

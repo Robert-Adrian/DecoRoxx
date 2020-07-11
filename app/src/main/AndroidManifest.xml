@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="DecoMainActivity" />
+        <activity android:name=".ProductActivity"/>
         <activity android:name=".ShopActivity"/>
 
         <meta-data
