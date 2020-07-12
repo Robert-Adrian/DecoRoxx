@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DecoRoxx</string>
+    <string name="slogan">\nEvenimentele Speciale\n necesita \nCadouri Speciale</string>
+    <string name="find">Ce anume cauti ?</string>
+    <string name="start" >Magazin</string>
+    <string name="events">Evenimente</string>
+    <string name="buchets">Buchete</string>
+    <string name="mart">Martisoare</string>
+    <string name="shop">Cosul meu</string>
+    <string name="buchet">Buchet de trandafiri\n</string>
+    <string name="buchet_mic">Buchet mic de trandafiri\n</string>
+</resources>

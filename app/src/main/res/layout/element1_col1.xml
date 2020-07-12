@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/root">
+
+    <ImageView
+        android:id="@+id/imageCard"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@drawable/element_drawer_image"
+        />
+
+    <TextView
+        android:id="@+id/descriptionCard"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:fontFamily="@font/allura"
+        android:textSize="19dp"
+        android:paddingLeft="8dp"
+         />
+
+    <TextView
+        android:id="@+id/priceCard"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/element_drawer_text"
+        android:fontFamily="@font/allura"
+        android:textAlignment="textEnd"
+        android:textSize="19dp"
+        android:paddingRight="8dp"
+        android:textStyle="bold"
+        android:gravity="end" />
+</LinearLayout>

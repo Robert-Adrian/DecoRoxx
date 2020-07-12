@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/total_comanda"
+        android:layout_width="190dp"
+        android:paddingLeft="20dp"
+        android:fontFamily="@font/allura"
+        android:textSize="22dp"
+        android:textColor="#e60923"
+        android:layout_height="wrap_content"
+        android:text="Total comanda:" />
+
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="end"
+        android:textColor="#e60923"
+        android:paddingRight="22dp"
+        android:text="50 Lei"
+        android:textAlignment="textEnd"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>
