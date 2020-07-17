@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/cantitate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/quantity_price_item_shop"
+        android:clickable="true"
+        android:fontFamily="casual"
+        android:text="1 buc."
+        android:textAllCaps="false"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/pret"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:fontFamily="casual"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:text="50 Lei"
+        android:background="@drawable/quantity_price_item_shop"/>
+</LinearLayout>
