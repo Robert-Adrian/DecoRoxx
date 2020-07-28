@@ -31,6 +31,7 @@ import android.widget.TextView;
 public class ShopActivity extends AppCompatActivity {
     Button quantity;
     TableLayout list_item_shop;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedBundleInstance) {
@@ -50,6 +51,7 @@ public class ShopActivity extends AppCompatActivity {
         ViewGroup.LayoutParams paramsScrollView = (ViewGroup.LayoutParams)scrollView.getLayoutParams();
         ViewGroup.LayoutParams paramsBottomComponent = (ViewGroup.LayoutParams)bottom_component.getLayoutParams();
         list_item_shop = (TableLayout)scrollView.findViewById(R.id.list_item_shop);
+
         for (int i = 0; i < 4; i++) {
             TableRow tableRow = new TableRow(list_item_shop.getContext());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
@@ -59,6 +61,7 @@ public class ShopActivity extends AppCompatActivity {
             View details_shop_element = (View)item_shop.findViewById(R.id.details_shop_element);
             ImageView photoShopElement = (ImageView)item_shop.findViewById(R.id.photo);
             View quantity_price_item_shop = (View)details_shop_element.findViewById(R.id.quantity_price_shop);
+            final RadioButton colorPicker = (RadioButton) details_shop_element.findViewById(R.id.textView4);
 
             final int finalI = i;
             item_shop.setOnLongClickListener(new View.OnLongClickListener() {
@@ -68,6 +71,23 @@ public class ShopActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
+            colorPicker.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int[] colorsVector = getResources().getIntArray(R.array.colors);
+                    alertDialogColorPicker(colorsVector, colorPicker);
+                }
+            });
+
+            colorPicker.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    alertDialogDelElem(v, finalI);
+                    return false;
+                }
+            });
+
             Button continueBtn = (Button)bottom_component.findViewById(R.id.continua);
             continueBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,6 +181,61 @@ public class ShopActivity extends AppCompatActivity {
                 //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
             }
         });
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
+    }
+
+    public void alertDialogColorPicker(final int[] colors, final RadioButton colorPicker) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Selecteaza o culoare");
+        View checkBoxView = View.inflate(this, R.layout.checkbox, null);
+        final RadioGroup containerCulori = (RadioGroup)checkBoxView.findViewById(R.id.container_culori);
+        for (int i = 0; i < colors.length; i++) {
+            final RadioButton checkBox = new RadioButton(containerCulori.getContext());
+
+            checkBox.setBackgroundColor(colors[i]);
+
+            checkBox.setPadding(20,0,0,0);
+            checkBox.setButtonDrawable(R.drawable.custom_checkbox);
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                @Override
+                public void onClick(View v) {
+
+                    ColorStateList colorStateList = new ColorStateList(
+                            new int[][]{
+                                    new int[]{-android.R.attr.state_enabled},
+                                    new int[]{android.R.attr.state_enabled}
+                            },
+                            new int[]{
+                                    Color.BLUE,
+                                    ((ColorDrawable)v.getBackground()).getColor()
+                            }
+                    );
+
+                    colorPicker.setButtonTintList(colorStateList);
+                    colorPicker.invalidate();
+                }
+            });
+            containerCulori.addView(checkBox);
+        }
+        dialog.setView(checkBoxView);
+
+
+
+      /*  dialog.setPositiveButton("Gata",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+
+                    }
+                });
+        dialog.setNegativeButton("Anulare",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+             //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+            }
+        });*/
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
     }

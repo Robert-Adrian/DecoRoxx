@@ -8,10 +8,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:textSize="30dp"
+        android:textSize="27dp"
         android:textStyle="bold"
-        android:text="Pret: "
-        android:layout_marginRight="80dp"/>
+        android:fontFamily="casual"
+        android:text="Pret: " />
 
     <RadioButton
         android:id="@+id/color_picker"
@@ -20,6 +20,7 @@
         android:layout_weight="1"
         android:checked="true"
         android:buttonTint="#e60923"
+        android:fontFamily="casual"
         android:text="Culoare buchet" />
 
 

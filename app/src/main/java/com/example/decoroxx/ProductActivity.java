@@ -57,12 +57,21 @@ public class ProductActivity extends AppCompatActivity {
         TextView title = (TextView)findViewById(R.id.title);
         TextView description = (TextView)findViewById(R.id.description);
         TextView price = (TextView)findViewById(R.id.price);
+        RadioButton color_picker = (RadioButton)findViewById(R.id.color_picker);
         if (bundle != null) {
             int resId = bundle.getInt("resId");
             view.setImageResource(resId);
             title.setText(bundle.getString("title"));
             description.setText(bundle.getString("description"));
             price.setText("Pret: " + bundle.getString("price") + " Lei");
+            ViewGroup.LayoutParams paramsPrice = (ViewGroup.LayoutParams)price.getLayoutParams();
+            ViewGroup.LayoutParams paramsColorPicker = (ViewGroup.LayoutParams)color_picker.getLayoutParams();
+
+            paramsPrice.width = widthScreen / 2 + widthScreen / 8;
+            paramsColorPicker.width = widthScreen / 4 + widthScreen / 8;
+            price.setLayoutParams(paramsPrice);
+            color_picker.setLayoutParams(paramsColorPicker);
+
         }
         ViewGroup.LayoutParams paramsImageView = (ViewGroup.LayoutParams)view.getLayoutParams();
         ViewGroup.LayoutParams paramsScrollView = (ViewGroup.LayoutParams)scrollView.getLayoutParams();
@@ -88,14 +97,16 @@ public class ProductActivity extends AppCompatActivity {
         colorPicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int[] colorsVector = getResources().getIntArray(R.array.colors);
+                Product product = new Product();
+                String[] colorsVector = {"#e60923", "#fcba03"};
+                System.out.println(colorsVector);
                 alertDialog(colorsVector);
             }
         });
 
     }
 
-    public void alertDialog(final int[] colors) {
+    public void alertDialog(final String[] colors) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Selecteaza o culoare");
         View checkBoxView = View.inflate(this, R.layout.checkbox, null);
@@ -103,7 +114,7 @@ public class ProductActivity extends AppCompatActivity {
         for (int i = 0; i < colors.length; i++) {
             final RadioButton checkBox = new RadioButton(containerCulori.getContext());
 
-            checkBox.setBackgroundColor(colors[i]);
+            checkBox.setBackgroundColor(Color.parseColor(colors[i]));
 
             checkBox.setPadding(20,0,0,0);
             checkBox.setButtonDrawable(R.drawable.custom_checkbox);

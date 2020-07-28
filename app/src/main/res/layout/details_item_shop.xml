@@ -3,16 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <RadioButton
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/allura"
         android:textSize="22dp"
+        android:textAlignment="textStart"
+        android:layoutDirection="rtl"
+        android:checked="true"
+        android:buttonTint="#e60923"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:background="#ffff"
-        android:text="Buchet de trandafiri decorat pentru un moment special alaturi de persoana draga. Florile ..." />
+        android:text="Buchet de trandafiri decorat pentru un moment special alaturi de persoana ..."
+        android:gravity="start" />
 
     <include
         android:id="@+id/quantity_price_shop"
