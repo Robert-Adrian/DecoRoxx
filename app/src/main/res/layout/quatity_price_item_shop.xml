@@ -11,7 +11,7 @@
         android:background="@drawable/quantity_price_item_shop"
         android:clickable="true"
         android:fontFamily="casual"
-        android:text="1 buc."
+        android:text=""
         android:textAllCaps="false"
         android:textSize="20dp" />
 
@@ -24,6 +24,6 @@
         android:fontFamily="casual"
         android:textAllCaps="false"
         android:textSize="20dp"
-        android:text="50 Lei"
+        android:text=""
         android:background="@drawable/quantity_price_item_shop"/>
 </LinearLayout>

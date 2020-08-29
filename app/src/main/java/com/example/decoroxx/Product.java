@@ -1,19 +1,24 @@
 package com.example.decoroxx;
 
+
+import java.util.Arrays;
 import java.util.List;
 
 public class Product {
     private int idProduct;
     private String type;
-    private int imageProduct;
+    private byte[] imageProduct;
     private String productTitle;
     private String productDescription;
-    private double price;
-    private List<String> colorList = null;
+    private int price;
+    private int quantity;
+    private String selectedColor;
+    private String colorList = null;
 
     public Product() { }
 
-    public Product(int imageProduct, String productTitle, String productDescription, double price, List<String> colorList) {
+    public Product(String type, byte[] imageProduct, String productTitle, String productDescription, int price, String colorList) {
+        this.type = type;
         this.imageProduct = imageProduct;
         this.productTitle = productTitle;
         this.productDescription = productDescription;
@@ -33,11 +38,11 @@ public class Product {
 
     public void setType(String type) { this.type = type; }
 
-    public int getImageProduct() {
+    public byte[] getImageProduct() {
         return imageProduct;
     }
 
-    public void setImageProduct(int imageProduct) {
+    public void setImageProduct(byte[] imageProduct) {
         this.imageProduct = imageProduct;
     }
 
@@ -57,19 +62,50 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public List<String> getColorList() {
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getSelectedColor() {
+        return selectedColor;
+    }
+
+    public void setSelectedColor(String selectedColor) {
+        this.selectedColor = selectedColor;
+    }
+
+    public String getColorList() {
         return colorList;
     }
 
-    public void setColorList(List<String> colorList) {
+    public void setColorList(String colorList) {
         this.colorList = colorList;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "idProduct=" + idProduct +
+                ", type='" + type + '\'' +
+                ", imageProduct=" + Arrays.toString(imageProduct) +
+                ", productTitle='" + productTitle + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", selectedColor='" + selectedColor + '\'' +
+                ", colorList='" + colorList + '\'' +
+                '}';
     }
 }

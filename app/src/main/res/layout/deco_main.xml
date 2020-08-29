@@ -34,6 +34,7 @@
         android:layout_marginRight="16dp"
         android:background="@drawable/search_btn"
         android:drawableLeft="@drawable/search"
+        android:onClick="findItems"
         android:paddingLeft="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -13,8 +13,7 @@
         android:layout_height="200dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:background="@drawable/element_drawer_image"
-        app:srcCompat="@drawable/sa" />
+        android:background="@drawable/element_drawer_image" />
 
     <TextView
         android:id="@+id/textView2"
@@ -23,8 +22,7 @@
         android:background="#ffff"
         android:fontFamily="@font/allura"
         android:textSize="19dp"
-        android:paddingLeft="8dp"
-        android:text="@string/buchet_mic" />
+        android:paddingLeft="8dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -32,7 +30,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/allura"
         android:textSize="19dp"
-        android:text="50 lei"
         android:textAlignment="textEnd"
         android:gravity="end"
         android:paddingRight="8dp"
