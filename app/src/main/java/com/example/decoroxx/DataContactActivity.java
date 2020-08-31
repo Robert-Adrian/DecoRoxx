@@ -4,17 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class DataContactActivity extends AppCompatActivity {
     static DatabaseHandler databaseHandler;
@@ -31,13 +28,16 @@ public class DataContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceBundle);
         setContentView(R.layout.datacontact_activity);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         databaseHandler = new DatabaseHandler(this);
+
         totalSuma = (int) getIntent().getSerializableExtra("totalComanda");
         scrollView = (ScrollView)findViewById(R.id.container_details);
         nameField = (EditText) scrollView.findViewById(R.id.name_field);
         phoneField = (EditText) scrollView.findViewById(R.id.phone_field);
         addressField = (EditText) scrollView.findViewById(R.id.address_field);
         informationFields = new EditText[]{nameField, phoneField, addressField};
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int heightScreen = displayMetrics.heightPixels;
@@ -47,11 +47,9 @@ public class DataContactActivity extends AppCompatActivity {
 
         ViewGroup.LayoutParams paramsTitle = (ViewGroup.LayoutParams)dataContactTitle.getLayoutParams();
         ViewGroup.LayoutParams paramsScrollView = (ViewGroup.LayoutParams)scrollView.getLayoutParams();
-  //      ViewGroup.LayoutParams paramsContinueBtn = (ViewGroup.LayoutParams)finallyBtn.getLayoutParams();
 
         paramsTitle.height = heightScreen / 4;
         paramsScrollView.height = heightScreen / 2;
-//        paramsContinueBtn.height = heightScreen / 4;
 
         dataContactTitle.setLayoutParams(paramsTitle);
         scrollView.setLayoutParams(paramsScrollView);

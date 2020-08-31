@@ -87,7 +87,6 @@
                 android:textSize="15dp"
                 android:text="Produsele se pot livra doar in Timisoara"/>
 
-
         </LinearLayout>
     </ScrollView>
 

@@ -5,18 +5,24 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 public class ThankYouActivity extends AppCompatActivity {
+    private InterstitialAd mInterstitialAd;
+    private int appears;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -24,10 +30,16 @@ public class ThankYouActivity extends AppCompatActivity {
         super.onCreate(savedBundleInstance);
         setContentView(R.layout.thank_you_activity);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        appears = 1;
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int heightScreen = displayMetrics.heightPixels;
         int widthScreen = displayMetrics.widthPixels;
+
         View sendTitle = (View)findViewById(R.id.title_send);
         TextView message1 = (TextView)findViewById(R.id.message1);
         TextView message2 = (TextView)findViewById(R.id.message2);
@@ -40,8 +52,6 @@ public class ThankYouActivity extends AppCompatActivity {
         paramsFlowerLogo.setMargins(0,0,widthScreen / 2, 0);
         ViewGroup.LayoutParams paramsSendTitle = (ViewGroup.LayoutParams)sendTitle.getLayoutParams();
         ViewGroup.LayoutParams paramsContainerFlower = (ViewGroup.LayoutParams)containerFlower.getLayoutParams();
-        //ViewGroup.LayoutParams paramsMessage1 = (ViewGroup.LayoutParams)message1.getLayoutParams();
-        //ViewGroup.LayoutParams paramsMessage2 = (ViewGroup.LayoutParams)message2.getLayoutParams();
 
         paramsSendTitle.height = heightScreen / 8;
         paramsContainerFlower.height = heightScreen / 2;
@@ -53,8 +63,20 @@ public class ThankYouActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ThankYouActivity.this, DecoMainActivity.class);
-                startActivity(intent);
+                if (appears < 2) {
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    mInterstitialAd.setAdListener(new AdListener() {
+                        public void onAdLoaded() {
+                            if (mInterstitialAd.isLoaded()) {
+                                appears++;
+                                mInterstitialAd.show();
+                            }
+                        }
+                    });
+                } else {
+                    Intent intent = new Intent(ThankYouActivity.this, DecoMainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

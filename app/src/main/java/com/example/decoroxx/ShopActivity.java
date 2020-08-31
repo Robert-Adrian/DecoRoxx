@@ -11,9 +11,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -46,12 +45,14 @@ public class ShopActivity extends AppCompatActivity {
         super.onCreate(savedBundleInstance);
         setContentView(R.layout.shop_activity);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         databaseHandler = new DatabaseHandler(this);
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int heightScreen = displayMetrics.heightPixels;
         int widthScreen = displayMetrics.widthPixels;
-        // System.out.println(height + " " + width);
+
         TextView view = (TextView)findViewById(R.id.cos_txt) ;
         ScrollView scrollView = (ScrollView)findViewById(R.id.container_shop);
         bottom_component = (View)findViewById(R.id.bottom_component);
@@ -59,8 +60,10 @@ public class ShopActivity extends AppCompatActivity {
         ViewGroup.LayoutParams paramsTextView = (ViewGroup.LayoutParams)view.getLayoutParams();
         ViewGroup.LayoutParams paramsScrollView = (ViewGroup.LayoutParams)scrollView.getLayoutParams();
         ViewGroup.LayoutParams paramsBottomComponent = (ViewGroup.LayoutParams)bottom_component.getLayoutParams();
+
         list_item_shop = (TableLayout)scrollView.findViewById(R.id.list_item_shop);
         final List<Product> productList = databaseHandler.getProductShop();
+
         for (int i = 0; i < productList.size(); i++) {
             final TableRow tableRow = new TableRow(list_item_shop.getContext());
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT);
@@ -88,14 +91,6 @@ public class ShopActivity extends AppCompatActivity {
 
             final int finalI = i;
 
-//            item_shop.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    alertDialogDelElem(productList.get(finalI), v, finalI);
-//                    return false;
-//                }
-//            });
-
             colorPicker.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,11 +106,14 @@ public class ShopActivity extends AppCompatActivity {
                     return false;
                 }
             });
+
             quantity = (Button)quantity_price_item_shop.findViewById(R.id.cantitate);
             quantity.setText(productList.get(i).getQuantity() + " buc.");
             totalSum += productList.get(i).getQuantity() * productList.get(i).getPrice();
+
             Button price = (Button)quantity_price_item_shop.findViewById(R.id.pret);
             price.setText(Integer.parseInt(((Button)quantity).getText().toString().substring(0, ((Button)quantity).getText().toString().indexOf("buc.")).trim()) * productList.get(finalI).getPrice() + " Lei");
+
             quantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -216,7 +214,7 @@ public class ShopActivity extends AppCompatActivity {
         dialog.setNegativeButton("Anulare",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-             //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+
             }
         });
         AlertDialog alertDialog=dialog.create();
@@ -244,7 +242,7 @@ public class ShopActivity extends AppCompatActivity {
         dialog.setNegativeButton("Nu",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+
             }
         });
         AlertDialog alertDialog=dialog.create();
@@ -287,7 +285,6 @@ public class ShopActivity extends AppCompatActivity {
 
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
-
     }
 
 

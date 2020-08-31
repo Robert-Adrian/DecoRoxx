@@ -7,10 +7,13 @@ import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,10 +26,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class DecoMainActivity extends AppCompatActivity {
     Menu myMenu;
@@ -35,6 +38,8 @@ public class DecoMainActivity extends AppCompatActivity {
     List<MenuItem> listItems;
     ScrollView scrollView;
     TableLayout tableProducts;
+    private InterstitialAd mInterstitialAd;
+    private int appears;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SourceLockedOrientationActivity")
@@ -43,6 +48,7 @@ public class DecoMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deco_main);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         databaseHandler = new DatabaseHandler(this);
         databaseHandler.createDataBase();
         try {
@@ -50,6 +56,11 @@ public class DecoMainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");//"ca-app-pub-8197630461157665/4558639680");
+        appears = 1;
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -149,7 +160,7 @@ public class DecoMainActivity extends AppCompatActivity {
                             tableProducts.addView(rowProducts, linie);
                             linie++;
                         }
-
+                        appears = 1;
                         return true;
 
                     case R.id.events:
@@ -316,8 +327,21 @@ public class DecoMainActivity extends AppCompatActivity {
                     case R.id.shop:
                         menuItem.setCheckable(false);
                         menuItem.setChecked(false);
-                        intent = new Intent(DecoMainActivity.this, ShopActivity.class);
-                        startActivity(intent);
+
+                         if (appears < 2) {
+                             mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                             mInterstitialAd.setAdListener(new AdListener() {
+                                public void onAdLoaded() {
+                                    if (mInterstitialAd.isLoaded()) {
+                                        appears++;
+                                        mInterstitialAd.show();
+                                    }
+                                }
+                             });
+                        } else {
+                            intent = new Intent(DecoMainActivity.this, ShopActivity.class);
+                            startActivity(intent);
+                        }
                         return true;
 
                     default:

@@ -4,22 +4,18 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 
@@ -118,7 +114,7 @@ public class FinishComandActivity extends AppCompatActivity {
                            message += "\n===========================================================================================\n";
                            message += "Id produs: " + productList.get(i).getIdProduct() + "\n";
                            message += "Titlu produs: " + productList.get(i).getProductTitle() + "\n";
-                           message += "Pret pe bucata: " + productList.get(i).getPrice() + "\n";
+                           message += "Pret pe bucata: " + productList.get(i).getPrice() + " Lei" + "\n";
                            message += "Cantitate: " + productList.get(i).getQuantity() + "\n";
                            message += "Culoare aleasa: " + productList.get(i).getSelectedColor() + "\n";
                            message += "Culori disponibile: " + productList.get(i).getColorList() + "\n";

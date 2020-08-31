@@ -1,19 +1,18 @@
 package com.example.decoroxx;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
-import java.util.List;
 
 public class ProductActivity extends AppCompatActivity {
 
@@ -38,12 +35,14 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedBundleInstance);
         setContentView(R.layout.product_activity);
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         databaseHandler = new DatabaseHandler(this);
-        //databaseHandler.createDataBase();
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int heightScreen = displayMetrics.heightPixels;
         int widthScreen = displayMetrics.widthPixels;
+
         Bundle bundle = getIntent().getExtras();
         ImageView view = (ImageView)findViewById(R.id.imageView3) ;
         ScrollView scrollView = (ScrollView)findViewById(R.id.text_description);
@@ -52,6 +51,7 @@ public class ProductActivity extends AppCompatActivity {
         TextView description = (TextView)findViewById(R.id.description);
         TextView price = (TextView)findViewById(R.id.price);
         RadioButton color_picker = (RadioButton)findViewById(R.id.color_picker);
+
         if (bundle != null) {
             product.setIdProduct(bundle.getInt("id"));
             product.setType(bundle.getString("type"));
@@ -61,7 +61,8 @@ public class ProductActivity extends AppCompatActivity {
             product.setPrice(bundle.getInt("price"));
             product.setColorList(bundle.getString("colors"));
             product.setQuantity(1);
-            view.setImageBitmap((BitmapFactory.decodeByteArray(bundle.getByteArray("image"), 0, bundle.getByteArray("image").length)));
+            view.setImageBitmap(Bitmap.createScaledBitmap(BitmapFactory.decodeByteArray(bundle.getByteArray("image"), 0, bundle.getByteArray("image").length), widthScreen, ((heightScreen * 3) / 8), false));
+
             title.setText(bundle.getString("title"));
             description.setText(bundle.getString("description"));
             price.setText("Pret: " + getIntent().getSerializableExtra("price") + " Lei");
@@ -74,20 +75,18 @@ public class ProductActivity extends AppCompatActivity {
             color_picker.setLayoutParams(paramsColorPicker);
 
         }
+
         ViewGroup.LayoutParams paramsImageView = (ViewGroup.LayoutParams)view.getLayoutParams();
         ViewGroup.LayoutParams paramsScrollView = (ViewGroup.LayoutParams)scrollView.getLayoutParams();
         ViewGroup.LayoutParams paramsPriceChart = (ViewGroup.LayoutParams)price_chart.getLayoutParams();
 
-        int heightPhoto = ((heightScreen * 3) / 8);
-        paramsImageView.height = ((heightScreen * 3) / 8);
+        paramsImageView.height = ((heightScreen) / 2);
         paramsImageView.width = widthScreen;
         view.setLayoutParams(paramsImageView);
 
-
-        paramsScrollView.height = ((heightScreen * 3)/ 4);
+        paramsScrollView.height = ((heightScreen * 3) / 4);
         paramsScrollView.width = widthScreen;
         scrollView.setLayoutParams(paramsScrollView);
-
 
         paramsPriceChart.height = heightScreen / 4;
         paramsPriceChart.width = widthScreen;
@@ -159,8 +158,6 @@ public class ProductActivity extends AppCompatActivity {
         } else {
             databaseHandler.addProduct(product);
         }
-        //Intent intent = new Intent(this, DecoMainActivity.class);
-       // startActivity(intent);
        finish();
     }
 
